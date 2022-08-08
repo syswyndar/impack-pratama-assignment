@@ -1,12 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ListProduct = ({
   code_produk,
   nama_produk,
   deskripsi_produk,
   harga_produk,
+  uom,
+  id,
+  harga,
   openModal,
 }) => {
+  const navigate = useNavigate();
+  const toEditPage = () => {
+    navigate(`/products/${nama_produk}/edit`, {
+      state: {
+        id,
+        code_produk,
+        nama_produk,
+        deskripsi_produk,
+        harga,
+        uom,
+      },
+    });
+  };
   return (
     <>
       {/* {JSON.stringify(data)} */}
@@ -20,14 +37,16 @@ const ListProduct = ({
             {deskripsi_produk}
           </div>
         </td>
-        <td className="px-6 py-4 text-sm text-gray-500">{harga_produk}</td>
+        <td className="px-6 py-4 text-sm text-gray-500">
+          {harga_produk} / {uom}
+        </td>
         <td className="px-6 py-4 flex gap-2">
-          <a
-            href="#"
+          <button
             className="px-4 py-1 text-sm text-blue-600 bg-blue-200 rounded-full"
+            onClick={() => toEditPage()}
           >
             Edit
-          </a>
+          </button>
           <button
             className="px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full"
             onClick={openModal}

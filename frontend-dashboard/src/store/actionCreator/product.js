@@ -81,3 +81,19 @@ export const deleteProduct = (id) => {
     }
   };
 };
+
+export const editProduct = (id, inputData) => {
+  return async (dispatch) => {
+    dispatch(setError(null));
+    dispatch(setLoading(true));
+    try {
+      let { data } = await Axios.put(`${DEV_URL}/products/${id}`, inputData);
+      return data;
+    } catch (err) {
+      console.log(err);
+      dispatch(setError(err));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+};

@@ -71,10 +71,13 @@ const Product = () => {
                       return (
                         <ListProduct
                           key={item.id}
+                          id={item.id}
                           code_produk={item.code_produk}
                           nama_produk={item.nama_produk}
                           deskripsi_produk={item.deskripsi_produk}
                           harga_produk={convertCurrency(item.harga_produk)}
+                          harga={item.harga_produk}
+                          uom={item.uom}
                           openModal={(e) => handleDelete(e, true, item)}
                         />
                       );
