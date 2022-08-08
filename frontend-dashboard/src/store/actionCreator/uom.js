@@ -5,8 +5,7 @@ import {
   SET_UOM,
 } from "../actionType";
 import Axios from "axios";
-
-const DEV_URL = "http://localhost:3000/api/v1";
+import { DEV_URL } from "../../api/api";
 
 const setUom = (payload) => {
   return {
