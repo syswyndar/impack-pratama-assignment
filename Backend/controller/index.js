@@ -4,6 +4,7 @@ const createProduct = async (req, res) => {
   try {
     const { code_produk, nama_produk, deskripsi_produk, harga_produk, uom } =
       req.body;
+
     const product = await Product.create({
       code_produk,
       nama_produk,
@@ -20,7 +21,7 @@ const createProduct = async (req, res) => {
     console.log(err);
     res.status(500).json({
       success: false,
-      message: err.message,
+      message: err,
     });
   }
 };
@@ -46,6 +47,7 @@ const getValueUom = async (req, res) => {
 const getAllProduct = async (req, res) => {
   try {
     const products = await Product.findAll();
+    // console.log(products, "ini products");
     res.status(200).json({
       success: true,
       message: "get all product successfully",

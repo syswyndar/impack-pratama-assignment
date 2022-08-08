@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       code_produk: DataTypes.STRING,
       nama_produk: DataTypes.STRING,
-      deskripsi_produk: DataTypes.STRING,
+      deskripsi_produk: DataTypes.TEXT,
       harga_produk: DataTypes.INTEGER,
       uom: DataTypes.ENUM("SHEET", "ROLL", "PCS"),
     },
